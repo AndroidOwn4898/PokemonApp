@@ -1,4 +1,4 @@
-package com.example.api
+package com.codeminetechnology.lumoslogicprecticalassignment.data.api
 
 import retrofit2.Call
 import retrofit2.http.GET
