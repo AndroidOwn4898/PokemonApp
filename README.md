@@ -15,7 +15,8 @@ A modern Android application built with **Jetpack Compose**, **Clean Architectur
 ## 📱 Screenshots
 
 [Add screenshots here]
-
+![img.png](img.png)
+![img_1.png](img_1.png)
 ---
 
 ## 🏗️ Architecture

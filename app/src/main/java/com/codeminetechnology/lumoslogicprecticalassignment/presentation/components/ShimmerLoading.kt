@@ -3,6 +3,7 @@ package com.codeminetechnology.lumoslogicprecticalassignment.presentation.compon
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -98,16 +99,18 @@ fun ShimmerCardItem(modifier: Modifier = Modifier) {
 
 /**
  * Shimmer Detail Placeholder - for detail screens
+ * FIXED: Changed from Box to Column to properly stack shimmer elements
  */
 @Composable
 fun ShimmerDetailItem(modifier: Modifier = Modifier) {
-    Box(
+    Column(
         modifier = modifier
             .fillMaxWidth()
             .background(
                 color = MaterialTheme.colorScheme.surface,
                 shape = RoundedCornerShape(12.dp)
             )
+            .padding(16.dp)
     ) {
         // Header shimmer
         ShimmerLoading(
@@ -117,12 +120,12 @@ fun ShimmerDetailItem(modifier: Modifier = Modifier) {
         )
 
         // Text shimmer lines
-        repeat(3) { index ->
+        repeat(3) { _ ->
             ShimmerLoading(
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .height(16.dp)
-                    .padding(top = (160 + index * 30).dp, start = 16.dp)
+                    .padding(top = 20.dp)
             )
         }
     }
