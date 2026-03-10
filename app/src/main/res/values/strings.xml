@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LumosLogicPrecticalAssignment</string>
+    <string name="app_name">Pokemon App</string>
     <string name="pok_mon_list">Pokemon List</string>
     <string name="no_pok_mon_found">No Pokemon found</string>
     <string name="retry">Retry</string>

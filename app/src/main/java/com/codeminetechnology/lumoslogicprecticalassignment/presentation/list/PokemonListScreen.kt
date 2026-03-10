@@ -42,7 +42,6 @@ import com.codeminetechnology.lumoslogicprecticalassignment.R
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.model.Pokemon
 import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.PokemonImage
 import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.ShimmerCardItem
-import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.ShimmerLoading
 
 /**
  * Pokemon list screen with pagination support

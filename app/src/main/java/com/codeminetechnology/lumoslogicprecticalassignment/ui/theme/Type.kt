@@ -6,10 +6,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-/**
- * Material Design 3 typography configuration
- * Follows Material Design guidelines with consistent sizing and weight
- */
 val Typography = Typography(
     displayLarge = TextStyle(
         fontFamily = FontFamily.Default,

@@ -12,9 +12,7 @@ import com.codeminetechnology.lumoslogicprecticalassignment.navigation.NavGraph
 import com.codeminetechnology.lumoslogicprecticalassignment.ui.theme.LumosLogicPrecticalAssignmentTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * Main activity - Entry point of the application
- */
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

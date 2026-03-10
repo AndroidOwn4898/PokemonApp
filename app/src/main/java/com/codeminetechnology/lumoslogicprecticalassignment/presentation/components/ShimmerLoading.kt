@@ -18,7 +18,6 @@ import androidx.compose.material3.MaterialTheme
 /**
  * Premium Shimmer Loading Animation Component
  * Shows smooth, realistic shimmer effect while content loads
- * Perfect for skeleton screens and placeholder states
  */
 @Composable
 fun ShimmerLoading(

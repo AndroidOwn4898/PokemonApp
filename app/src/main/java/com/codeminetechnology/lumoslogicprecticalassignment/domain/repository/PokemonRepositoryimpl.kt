@@ -16,9 +16,7 @@ import com.google.gson.reflect.TypeToken
 import java.net.SocketTimeoutException
 import javax.inject.Inject
 
-/**
- * Exception thrown when there is no internet connectivity
- */
+
 class NoInternetException(message: String = "No internet connection") : Exception(message)
 
 /**

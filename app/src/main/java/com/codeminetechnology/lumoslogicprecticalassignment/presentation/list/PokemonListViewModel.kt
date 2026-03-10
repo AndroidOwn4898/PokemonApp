@@ -65,9 +65,6 @@ class PokemonListViewModel @Inject constructor(
         }
     }
 
-    /**
-     * Load next page (pagination)
-     */
     fun loadNextPage() {
         currentPage++
         loadPokemonList()
@@ -80,9 +77,6 @@ class PokemonListViewModel @Inject constructor(
         loadPokemonList()
     }
 
-    /**
-     * Refresh Pokemon list (reset pagination)
-     */
     fun refresh() {
         currentPage = 1
         loadPokemonList()

@@ -28,7 +28,6 @@ import coil.request.ImageRequest
  * - Loading: gray background with semi-transparent image icon
  * - Success: Pokemon image displayed normally with crossfade
  * - Error / 404: red background with red image icon
- * - No URL: gray background with semi-transparent image icon
  */
 @Composable
 fun PokemonImage(

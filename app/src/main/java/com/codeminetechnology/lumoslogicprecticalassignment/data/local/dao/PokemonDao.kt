@@ -22,8 +22,8 @@ interface PokemonDao {
     @Query("SELECT * FROM pokemon WHERE name = :name LIMIT 1")
     suspend fun searchPokemonByName(name: String): PokemonEntity?
 
-    @Query("SELECT * FROM pokemon WHERE name LIKE '%' || :query || '%' ORDER BY id ASC LIMIT :limit")
-    suspend fun searchPokemon(query: String, limit: Int = 20): List<PokemonEntity>
+    /*@Query("SELECT * FROM pokemon WHERE name LIKE '%' || :query || '%' ORDER BY id ASC LIMIT :limit")
+    suspend fun searchPokemon(query: String, limit: Int = 20): List<PokemonEntity>*/
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPokemon(pokemon: PokemonEntity)
