@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LumosLogicPrecticalAssignment</string>
+    <string name="pok_mon_list">Pokemon List</string>
+    <string name="no_pok_mon_found">No Pokemon found</string>
+    <string name="retry">Retry</string>
+    <string name="pok_mon_details">Pokemon Details</string>
+    <string name="basic_information">Basic Information</string>
+    <string name="base_experience">Base Experience</string>
+    <string name="types">Types</string>
+    <string name="stats">Stats</string>
+</resources>
