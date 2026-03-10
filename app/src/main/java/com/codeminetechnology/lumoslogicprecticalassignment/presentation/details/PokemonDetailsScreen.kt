@@ -42,6 +42,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.codeminetechnology.lumoslogicprecticalassignment.R
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.model.PokemonDetail
 import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.PokemonImage
+import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.ShimmerDetailItem
 
 /**
  * Pokemon detail screen showing comprehensive information
@@ -82,10 +83,12 @@ fun PokemonDetailScreen(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(innerPadding),
-                    contentAlignment = Alignment.Center
+                        .padding(innerPadding)
+                        .verticalScroll(rememberScrollState())
+                        .padding(16.dp),
+                    contentAlignment = Alignment.TopCenter
                 ) {
-                    CircularProgressIndicator()
+                    ShimmerDetailItem()
                 }
             }
 

@@ -307,23 +307,3 @@ app/src/main/
 8. **Backend Integration** - Custom backend API
 
 ---
-
-## 📄 License
-
-This project is open source and available under the MIT License.
-
----
-
-## 👨‍💻 Developer
-
-**AndroidOwn4898**  
-Building production-ready Android apps with modern architecture.
-
----
-
-## 📚 References
-
-- [Jetpack Compose Documentation](https://developer.android.com/jetpack/compose)
-- [Clean Architecture Guide](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-- [PokéAPI Documentation](https://pokeapi.co/)
-- [Material Design 3](https://m3.material.io/)

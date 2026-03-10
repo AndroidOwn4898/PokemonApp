@@ -41,6 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.codeminetechnology.lumoslogicprecticalassignment.R
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.model.Pokemon
 import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.PokemonImage
+import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.ShimmerCardItem
 import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.ShimmerLoading
 
 /**
@@ -240,17 +241,12 @@ private fun NoInternetState(
 @Composable
 private fun ShimmerListContent(modifier: Modifier = Modifier) {
     LazyColumn(
-        state = rememberLazyListState(),
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        items(10) {
-            ShimmerLoading(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-            )
+        items(8) {
+            ShimmerCardItem()
         }
     }
 }
