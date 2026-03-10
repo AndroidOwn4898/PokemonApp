@@ -35,15 +35,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import coil.compose.AsyncImage
 import com.codeminetechnology.lumoslogicprecticalassignment.R
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.model.Pokemon
+import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.PokemonImage
 
 /**
  * Pokemon list screen with pagination support
@@ -190,15 +188,12 @@ private fun PokemonCard(
                 overflow = TextOverflow.Ellipsis
             )
 
-            AsyncImage(
-                model = pokemon.imageUrl,
+            PokemonImage(
+                imageUrl = pokemon.imageUrl,
                 contentDescription = pokemon.name,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp),
-                contentScale = ContentScale.Fit,
-                placeholder = painterResource(R.drawable.img_preview),
-                error = painterResource(R.drawable.img_preview)
+                    .height(100.dp)
             )
         }
     }
