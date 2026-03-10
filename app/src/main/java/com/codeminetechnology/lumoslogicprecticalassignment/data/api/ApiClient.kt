@@ -1,4 +1,4 @@
-package data.api
+package com.codeminetechnology.lumoslogicprecticalassignment.data.api
 
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
