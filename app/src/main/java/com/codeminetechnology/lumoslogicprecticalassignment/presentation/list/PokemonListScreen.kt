@@ -19,7 +19,6 @@ import androidx.compose.material.icons.filled.Error
 import androidx.compose.material.icons.filled.WifiOff
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -42,6 +41,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.codeminetechnology.lumoslogicprecticalassignment.R
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.model.Pokemon
 import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.PokemonImage
+import com.codeminetechnology.lumoslogicprecticalassignment.presentation.components.ShimmerLoading
 
 /**
  * Pokemon list screen with pagination support
@@ -90,7 +90,7 @@ fun PokemonListScreen(
         when (state) {
             is PokemonListState.Loading -> {
                 if (pokemonList.isEmpty()) {
-                    LoadingState(modifier = Modifier.padding(innerPadding))
+                    ShimmerListContent(modifier = Modifier.padding(innerPadding))
                 } else {
                     PokemonListContent(
                         pokemonList = pokemonList,
@@ -238,12 +238,20 @@ private fun NoInternetState(
 }
 
 @Composable
-private fun LoadingState(modifier: Modifier = Modifier) {
-    Box(
+private fun ShimmerListContent(modifier: Modifier = Modifier) {
+    LazyColumn(
+        state = rememberLazyListState(),
         modifier = modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentPadding = PaddingValues(12.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        CircularProgressIndicator()
+        items(10) {
+            ShimmerLoading(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+            )
+        }
     }
 }
 
