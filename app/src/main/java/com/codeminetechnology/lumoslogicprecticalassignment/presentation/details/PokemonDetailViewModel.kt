@@ -4,6 +4,7 @@ package com.codeminetechnology.lumoslogicprecticalassignment.presentation.detail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.model.PokemonDetail
+import com.codeminetechnology.lumoslogicprecticalassignment.domain.repository.NoInternetException
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.usecase.GetPokemonDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,7 +35,11 @@ class PokemonDetailViewModel @Inject constructor(
                 result.onSuccess { detail ->
                     _state.value = PokemonDetailState.Success(detail)
                 }.onFailure { exception ->
-                    _state.value = PokemonDetailState.Error(exception.message ?: "Unknown error")
+                    _state.value = if (exception is NoInternetException) {
+                        PokemonDetailState.NoInternet(exception.message ?: "No internet connection")
+                    } else {
+                        PokemonDetailState.Error(exception.message ?: "Unknown error")
+                    }
                 }
             } catch (e: Exception) {
                 _state.value = PokemonDetailState.Error(e.message ?: "Unknown error")
@@ -56,5 +61,6 @@ class PokemonDetailViewModel @Inject constructor(
 sealed class PokemonDetailState {
     object Loading : PokemonDetailState()
     data class Success(val pokemon: PokemonDetail) : PokemonDetailState()
+    data class NoInternet(val message: String) : PokemonDetailState()
     data class Error(val message: String) : PokemonDetailState()
 }

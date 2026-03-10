@@ -16,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.WifiOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -119,6 +120,40 @@ fun PokemonDetailScreen(
                         )
                         Text(
                             text = (state as PokemonDetailState.Error).message,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
+                        Button(
+                            onClick = { viewModel.retry(pokemonName) },
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(stringResource(R.string.retry))
+                        }
+                    }
+                }
+            }
+
+            is PokemonDetailState.NoInternet -> {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(16.dp),
+                        modifier = Modifier.padding(16.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.WifiOff,
+                            contentDescription = "No internet",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(60.dp),
+                            tint = MaterialTheme.colorScheme.error
+                        )
+                        Text(
+                            text = (state as PokemonDetailState.NoInternet).message,
                             style = MaterialTheme.typography.bodyMedium
                         )
                         Button(

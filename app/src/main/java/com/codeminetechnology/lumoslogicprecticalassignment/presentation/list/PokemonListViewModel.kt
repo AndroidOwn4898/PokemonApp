@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.model.Pokemon
+import com.codeminetechnology.lumoslogicprecticalassignment.domain.repository.NoInternetException
 import com.codeminetechnology.lumoslogicprecticalassignment.domain.usecase.GetPokemonListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,7 +41,7 @@ class PokemonListViewModel @Inject constructor(
             try {
                 val result = getPokemonListUseCase(page = currentPage, pageSize = pageSize)
                 result.onSuccess { pokemon ->
-                    Log.e("Pokemon", pokemon.toString())
+                    Log.d("Pokemon", pokemon.toString())
                     if (currentPage == 1) {
                         _pokemonList.value = pokemon
                     } else {
@@ -52,7 +53,11 @@ class PokemonListViewModel @Inject constructor(
                         PokemonListState.Success
                     }
                 }.onFailure { exception ->
-                    _state.value = PokemonListState.Error(exception.message ?: "Unknown error")
+                    _state.value = if (exception is NoInternetException) {
+                        PokemonListState.NoInternet(exception.message ?: "No internet connection")
+                    } else {
+                        PokemonListState.Error(exception.message ?: "Unknown error")
+                    }
                 }
             } catch (e: Exception) {
                 _state.value = PokemonListState.Error(e.message ?: "Unknown error")
@@ -92,5 +97,6 @@ sealed class PokemonListState {
     object Loading : PokemonListState()
     object Success : PokemonListState()
     object Empty : PokemonListState()
+    data class NoInternet(val message: String) : PokemonListState()
     data class Error(val message: String) : PokemonListState()
 }

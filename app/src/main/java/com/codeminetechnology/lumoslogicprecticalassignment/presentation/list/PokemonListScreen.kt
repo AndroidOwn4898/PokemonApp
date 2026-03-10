@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.filled.WifiOff
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -115,6 +116,14 @@ fun PokemonListScreen(
                 EmptyState(modifier = Modifier.padding(innerPadding))
             }
 
+            is PokemonListState.NoInternet -> {
+                NoInternetState(
+                    message = (state as PokemonListState.NoInternet).message,
+                    onRetry = { viewModel.retry() },
+                    modifier = Modifier.padding(innerPadding)
+                )
+            }
+
             is PokemonListState.Error -> {
                 ErrorState(
                     message = (state as PokemonListState.Error).message,
@@ -191,6 +200,44 @@ private fun PokemonCard(
                 placeholder = painterResource(R.drawable.img_preview),
                 error = painterResource(R.drawable.img_preview)
             )
+        }
+    }
+}
+
+@Composable
+private fun NoInternetState(
+    message: String,
+    onRetry: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.WifiOff,
+                contentDescription = "No internet",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp),
+                tint = MaterialTheme.colorScheme.error
+            )
+            Text(
+                text = message,
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.fillMaxWidth()
+            )
+            androidx.compose.material3.Button(
+                onClick = onRetry,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(stringResource(R.string.retry))
+            }
         }
     }
 }

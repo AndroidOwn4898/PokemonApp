@@ -42,7 +42,7 @@ object AppModule {
     }
 
     /**
-     * Provide OkHttpClient with logging interceptor
+     * Provide OkHttpClient with logging interceptor and timeouts
      */
     @Singleton
     @Provides
@@ -53,6 +53,9 @@ object AppModule {
 
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .connectTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+            .readTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
+            .writeTimeout(30, java.util.concurrent.TimeUnit.SECONDS)
             .build()
     }
 
@@ -106,7 +109,8 @@ object AppModule {
         apiService: PokemonApiService,
         pokemonDao: com.codeminetechnology.lumoslogicprecticalassignment.data.local.dao.PokemonDao,
         gson: Gson,
+        @ApplicationContext context: Context,
     ): PokemonRepository {
-        return PokemonRepositoryImpl(apiService, pokemonDao, gson)
+        return PokemonRepositoryImpl(apiService, pokemonDao, gson, context)
     }
 }
